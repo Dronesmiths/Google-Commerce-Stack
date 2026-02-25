@@ -19,9 +19,17 @@ Follow these steps to deploy a new eCommerce instance for a client.
 6. **Copy the Web App URL**. You will need this for the frontend.
 
 ## 3. Storefront Deployment (AWS S3)
+### Option A: Manual Upload
 1. Open `storefront/assets/app.js`.
-2. Find `const APPS_SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";` and paste your URL.
+2. Find `const APPS_SCRIPT_URL = "...";` and ensure your URL is pasted correctly.
 3. Upload the entire contents of the `storefront/` folder to your S3 bucket.
+
+### Option B: Automated Script (Recommended)
+1. Ensure your AWS CLI is configured (`aws configure`).
+2. Run the deployment script from the root directory:
+   ```bash
+   ./deploy.sh [YOUR_S3_BUCKET_NAME] [OPTIONAL_CLOUDFRONT_ID]
+   ```
 4. Ensure the S3 bucket is configured for **Static Website Hosting**.
 5. Create a **CloudFront Distribution** pointing to your S3 bucket (or S3 website endpoint).
 6. Enable **CloudFront Functions** or **CORS** headers if needed (though `no-cors` mode is used in `app.js` for simplicity).
