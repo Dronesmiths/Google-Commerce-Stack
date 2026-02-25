@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storefront | Google Commerce Engine</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Classic Bakery Store</h1>
+            <p>Freshly baked goods delivered to your door.</p>
+        </header>
+
+        <main>
+            <section class="order-form-container">
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Jane Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="items">Select Product</label>
+                        <select id="items" name="items" required>
+                            <option value="">Loading products...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="qty">Quantity</label>
+                            <input type="number" id="qty" name="qty" required value="1" min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="paymentMethod">Payment Method</label>
+                            <select id="paymentMethod" name="paymentMethod" required>
+                                <option value="Stripe">Stripe (Card)</option>
+                                <option value="Zelle">Zelle</option>
+                                <option value="Cash App">Cash App</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn">Place Order</button>
+                </form>
+
+                <div id="statusMessage" class="status-message">
+                    <div class="success-icon">✓</div>
+                    <h2>Order Received!</h2>
+                    <p>Your order ID is <span id="displayOrderId"></span>. Check your email for confirmation.</p>
+                    <button onclick="window.location.reload()">Place Another Order</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Bakery Store. Powered by Google Commerce Engine.</p>
+        </footer>
+    </div>
+
+    <script src="assets/app.js"></script>
+</body>
+
+</html>

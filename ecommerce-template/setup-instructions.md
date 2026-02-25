@@ -18,14 +18,17 @@ Follow these steps to deploy a new eCommerce instance for a client.
 5. Set "Execute as" to **Me** and "Who has access" to **Anyone**.
 6. **Copy the Web App URL**. You will need this for the frontend.
 
-## 3. Frontend Configuration
-1. Open `frontend.html`.
-2. Find the constant `const API_URL = "YOUR_APPS_SCRIPT_URL_HERE";` and paste your URL.
-3. If using Stripe, update the `STRIPE_CHECKOUT_LINK` placeholder.
-4. Upload `frontend.html` (or embed the code) to the client's website.
+## 3. Storefront Deployment (AWS S3)
+1. Open `storefront/assets/app.js`.
+2. Find `const APPS_SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";` and paste your URL.
+3. Upload the entire contents of the `storefront/` folder to your S3 bucket.
+4. Ensure the S3 bucket is configured for **Static Website Hosting**.
+5. Create a **CloudFront Distribution** pointing to your S3 bucket (or S3 website endpoint).
+6. Enable **CloudFront Functions** or **CORS** headers if needed (though `no-cors` mode is used in `app.js` for simplicity).
 
 ## 4. Final Test
-1. Refresh the frontend page. The product dropdown should populate automatically from the `Products` sheet.
-2. Place a test order.
-3. Verify the row appears in the `Orders` sheet with an auto-timestamp and auto-total.
-4. Check the `Dashboard` for live updates.
+1. Access your CloudFront URL.
+2. The product dropdown should populate automatically from the `Products` sheet.
+3. Place a test order.
+4. Verify the row appears in the `Orders` sheet with an auto-timestamp and auto-total.
+5. Check the `Dashboard` for live updates.
