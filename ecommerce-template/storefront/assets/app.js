@@ -4,7 +4,7 @@
  */
 
 // REPLACE THIS WITH YOUR DEPLOYED APPS SCRIPT WEB APP URL
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmDfuKTdJthq8Gzadc6qhxlOl_hy7ExOCavejFCeQGopNdnZc-RRjP1IzfCuaE4zdy/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBuL5fIIL_trL7ElQC0uly2bvAcOVMwNSMdXJYZx0d4YUmE37BHFBZ6cX0xvTB5rWP/exec";
 
 const orderForm = document.getElementById('orderForm');
 const productDropdown = document.getElementById('items');

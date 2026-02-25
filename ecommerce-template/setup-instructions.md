@@ -34,9 +34,26 @@ Follow these steps to deploy a new eCommerce instance for a client.
 5. Create a **CloudFront Distribution** pointing to your S3 bucket (or S3 website endpoint).
 6. Enable **CloudFront Functions** or **CORS** headers if needed (though `no-cors` mode is used in `app.js` for simplicity).
 
-## 4. Final Test
+## 4. Automation & Dashboard Setup
+To ensure the system is fully hardened, verify these formulas:
+
+### Orders Sheet (Column G: Total)
+Cell G2 should contain:
+```excel
+=ARRAYFORMULA(IF(E2:E100<>"", F2:F100 * IFERROR(VLOOKUP(E2:E100, Products!$A$2:$B$100, 2, FALSE), 0), ""))
+```
+
+### Dashboard Sheet
+- **Total Revenue (B1)**: `=SUMIFS(Orders!G2:G, Orders!I2:I, TRUE)`
+- **Payment Breakdowns (B2-B4)**: `=SUMIFS(Orders!G2:G, Orders!H2:H, "[Method]", Orders!I2:I, TRUE)`
+- **Unpaid Orders (B5)**: `=COUNTIFS(Orders!C2:C, "<>", Orders!I2:I, FALSE)`
+- **Low Stock Alert (B6)**: `=IFERROR(TEXTJOIN(", ", TRUE, FILTER(Products!A2:A, Products!E2:E < 3, Products!A2:A <> "")), "None")`
+
+## 5. Final Test Workflow
 1. Access your CloudFront URL.
-2. The product dropdown should populate automatically from the `Products` sheet.
-3. Place a test order.
-4. Verify the row appears in the `Orders` sheet with an auto-timestamp and auto-total.
-5. Check the `Dashboard` for live updates.
+2. Place a test order.
+3. Verify the row appears in **Orders**.
+4. Check the **"Paid?"** checkbox.
+5. Confirm revenue on **Dashboard** and stock deduction on **Products**.
+
+🚀 **Your Commerce Stack is Ready.**
