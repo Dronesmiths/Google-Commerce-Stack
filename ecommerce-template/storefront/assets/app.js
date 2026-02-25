@@ -4,7 +4,7 @@
  */
 
 // REPLACE THIS WITH YOUR DEPLOYED APPS SCRIPT WEB APP URL
-const APPS_SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmDfuKTdJthq8Gzadc6qhxlOl_hy7ExOCavejFCeQGopNdnZc-RRjP1IzfCuaE4zdy/exec";
 
 const orderForm = document.getElementById('orderForm');
 const productDropdown = document.getElementById('items');
@@ -24,7 +24,7 @@ async function loadProducts() {
     try {
         const response = await fetch(APPS_SCRIPT_URL);
         const products = await response.json();
-        
+
         if (products && products.length > 0) {
             productDropdown.innerHTML = products.map(item => `<option value="${item}">${item}</option>`).join('');
         } else {
@@ -68,7 +68,7 @@ orderForm.addEventListener('submit', async (e) => {
         // Note: With no-cors, we cannot read the response body directly. 
         // In a production environment with Stripe, we'd handle the redirect logic here.
         // For a simple successful submission, we show the success UI.
-        
+
         orderForm.style.display = 'none';
         statusMessage.style.display = 'block';
         displayOrderId.innerText = "Pending"; // ID generation is server-side
